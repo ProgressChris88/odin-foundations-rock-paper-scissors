@@ -3,17 +3,34 @@ function generateComputer() {
   return result[Math.floor(Math.random() * result.length)];
 }
 
-let playerChoice = prompt("Rock, Paper, or Scissors?").toLowerCase();
-let computerChoice = generateComputer();
 
-function game(computerChoice, playerChoice) {
+function playerPlay() {
+  return prompt("Rock, Paper, or Scissors?").toLowerCase();
+}
+
+
+function playRound(computerChoice, playerChoice) {
   if (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
-    return "Invalid";
+    alert("Invalid Response");
   }
   else if (playerChoice === computerChoice) {
-    return "Tie";
+    alert("It's a tie!");
+  }
+  else if ((playerChoice == "rock" && computerChoice == "scissors") ||
+  (playerChoice == "paper" && computerChoice == "rock") ||
+  (playerChoice == "scissors" && computerChoice == "paper")) {
+    alert("You win!");
+  }
+  else {
+     alert("You lose!");
   }
 }
 
 
-console.log(game(computerChoice, playerChoice));
+function game() {
+  for (let i = 1; i <= 4; i++) {
+    playRound(generateComputer(), playerPlay());
+  }
+}
+
+game();
