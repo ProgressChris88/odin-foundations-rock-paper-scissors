@@ -3,6 +3,7 @@ let playerScore = 0;
 
 let displayPlayerScore = document.getElementById("playerScore");
 let displayComputerScore = document.getElementById("computerScore");
+let displayResult = document.getElementById("result");
 
 function generateComputer() {
   const result = ["rock", "scissors", "paper"];
@@ -28,12 +29,12 @@ function playRound(computerChoice, playerChoice) {
     (playerChoice == "paper" && computerChoice == "rock") ||
     (playerChoice == "scissors" && computerChoice == "paper")
   ) {
-    displayPlayerScore.innerText += 1;
     playerScore += 1;
+    displayPlayerScore.innerText = playerScore;
     alert("You win!");
   } else {
-    displayComputerScore.innerText += 1;
     computerScore += 1;
+    displayComputerScore.innerText = computerScore;
     alert("You lose!");
   }
 }
@@ -44,10 +45,13 @@ function game() {
   }
   if (playerScore > computerScore) {
     alert("Congratulations! A winner is you!");
+    displayResult.innerText = "You win!";
   } else if (playerScore < computerScore) {
     alert("You lose! You should FEEL BAD!");
+    displayResult.innerText = "You lose!";
   } else {
     alert("It's a tie game!");
+    displayResult.innerText = "It's a tie!";
   }
 }
 
